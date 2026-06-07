@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Talks Event Schedule</title>
+    <style>/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#search-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#category-search {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    max-width: 400px;
+}
+
+#schedule-list {
+    margin-top: 20px;
+}
+
+.schedule-item {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.schedule-item.talk {
+    border-left: 5px solid #007bff;
+}
+
+.schedule-item.break {
+    background-color: #ffeeba;
+    border-left: 5px solid #ffc107;
+}
+
+.schedule-item.transition {
+    background-color: #e2e3e5;
+    border-left: 5px solid #6c757d;
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+}
+
+.schedule-item h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.schedule-item .time {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.schedule-item .speakers {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.schedule-item .category {
+    font-size: 0.9em;
+    background-color: #e9ecef;
+    padding: 3px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+.schedule-item .description {
+    font-size: 0.95em;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.8em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    #category-search {
+        width: 100%;
+    }
+}</style>
+</head>
+<body>
+    <header>
+        <h1>Technical Talks Event</h1>
+        <p>Your one-day deep dive into cutting-edge technology.</p>
+    </header>
+
+    <main>
+        <section id="search-section">
+            <input type="text" id="category-search" placeholder="Search by category (e.g., AI, Cloud)">
+        </section>
+
+        <section id="schedule-section">
+            <h2>Event Schedule</h2>
+            <div id="schedule-list">
+                <!-- Schedule will be rendered here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Technical Talks Event</p>
+    </footer>
+
+    
+    <script>
+        const schedule = [
+  {
+    "type": "talk",
+    "id": "talk-1",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "title": "Introduction to Quantum Computing",
+    "speakers": [
+      "Dr. Alice Smith"
+    ],
+    "category": [
+      "Quantum",
+      "Future Tech"
+    ],
+    "duration": 60,
+    "description": "An overview of the basics of quantum computing and its potential applications."
+  },
+  {
+    "type": "transition",
+    "name": "Transition",
+    "startTime": "11:00",
+    "endTime": "11:10",
+    "duration": 10
+  },
+  {
+    "type": "talk",
+    "id": "talk-2",
+    "startTime": "11:10",
+    "endTime": "12:10",
+    "title": "Advanced AI Ethics",
+    "speakers": [
+      "Prof. Bob Johnson",
+      "Dr. Carol White"
+    ],
+    "category": [
+      "AI",
+      "Ethics",
+      "Philosophy"
+    ],
+    "duration": 60,
+    "description": "Exploring the ethical implications of advanced artificial intelligence and responsible development."
+  },
+  {
+    "type": "transition",
+    "name": "Transition",
+    "startTime": "12:10",
+    "endTime": "12:20",
+    "duration": 10
+  },
+  {
+    "type": "talk",
+    "id": "talk-3",
+    "startTime": "12:20",
+    "endTime": "13:20",
+    "title": "Cloud Native Development with Kubernetes",
+    "speakers": [
+      "David Green"
+    ],
+    "category": [
+      "Cloud",
+      "DevOps"
+    ],
+    "duration": 60,
+    "description": "Best practices for building and deploying applications on Kubernetes in a cloud-native environment."
+  },
+  {
+    "type": "transition",
+    "name": "Transition",
+    "startTime": "13:20",
+    "endTime": "13:30",
+    "duration": 10
+  },
+  {
+    "type": "break",
+    "name": "Lunch Break",
+    "startTime": "13:30",
+    "endTime": "14:30",
+    "duration": 60
+  },
+  {
+    "type": "talk",
+    "id": "talk-4",
+    "startTime": "14:30",
+    "endTime": "15:30",
+    "title": "Securing Modern Web Applications",
+    "speakers": [
+      "Eve Black"
+    ],
+    "category": [
+      "Security",
+      "Web Development"
+    ],
+    "duration": 60,
+    "description": "A deep dive into common security vulnerabilities in web applications and how to mitigate them."
+  },
+  {
+    "type": "transition",
+    "name": "Transition",
+    "startTime": "15:30",
+    "endTime": "15:40",
+    "duration": 10
+  },
+  {
+    "type": "talk",
+    "id": "talk-5",
+    "startTime": "15:40",
+    "endTime": "16:40",
+    "title": "Frontend Performance Optimization",
+    "speakers": [
+      "Frank Blue"
+    ],
+    "category": [
+      "Frontend",
+      "Performance"
+    ],
+    "duration": 60,
+    "description": "Techniques and tools to optimize the performance of single-page applications and improve user experience."
+  },
+  {
+    "type": "transition",
+    "name": "Transition",
+    "startTime": "16:40",
+    "endTime": "16:50",
+    "duration": 10
+  },
+  {
+    "type": "talk",
+    "id": "talk-6",
+    "startTime": "16:50",
+    "endTime": "17:50",
+    "title": "Blockchain for Enterprise Solutions",
+    "speakers": [
+      "Grace Grey"
+    ],
+    "category": [
+      "Blockchain",
+      "Enterprise"
+    ],
+    "duration": 60,
+    "description": "Understanding how blockchain technology can be leveraged for various enterprise use cases beyond cryptocurrencies."
+  }
+];
+        // script.js
+document.addEventListener('DOMContentLoaded', () => {
+    // Schedule data will be globally available from the injected script
+    // const schedule = [ ... ];
+
+    const scheduleList = document.getElementById('schedule-list');
+    const categorySearchInput = document.getElementById('category-search');
+
+    function renderSchedule(filterCategory = '') {
+        scheduleList.innerHTML = ''; // Clear current schedule
+
+        const filteredSchedule = schedule.filter(item => {
+            if (filterCategory === '') return true;
+            if (item.type === 'talk') {
+                return item.category.some(cat => cat.toLowerCase().includes(filterCategory.toLowerCase()));
+            }
+            return true; // Always show breaks and transitions
+        });
+
+        filteredSchedule.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('schedule-item', item.type);
+
+            let content = `<span class="time">${item.startTime} - ${item.endTime}</span>`;
+
+            if (item.type === 'talk') {
+                content += `<h3>${item.title}</h3>`;
+                if (item.speakers && item.speakers.length > 0) {
+                    content += `<p class="speakers">Speaker(s): ${item.speakers.join(', ')}</p>`;
+                }
+                if (item.category && item.category.length > 0) {
+                    content += '<p>';
+                    item.category.forEach(cat => {
+                        content += `<span class="category">${cat}</span>`;
+                    });
+                    content += '</p>';
+                }
+                content += `<p class="description">${item.description}</p>`;
+            } else if (item.type === 'break' || item.type === 'transition') {
+                content += `<h3>${item.name} (${item.duration} min)</h3>`;
+            }
+
+            itemElement.innerHTML = content;
+            scheduleList.appendChild(itemElement);
+        });
+    }
+
+    // Initial render
+    renderSchedule();
+
+    // Search functionality
+    categorySearchInput.addEventListener('input', (event) => {
+        renderSchedule(event.target.value.trim());
+    });
+});
+    </script>
+    
+</body>
+</html>
